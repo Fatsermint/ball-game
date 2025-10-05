@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb01y45c440ww" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://di1meaf1hwpqp" path="res://player.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://bpfl6ho3urqlw" path="res://addons/Vector/pattern_74.svg" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bpfl6ho3urqlw" path="res://addons/pattern_74.svg" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://c2kicsn0ri6v6" path="res://kill.gd" id="3_h2yge"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]

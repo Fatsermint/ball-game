@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyopemlop8rjj"
-path="res://.godot/imported/pattern_56.svg-3c5c275be99e8f0738255da326927a21.ctex"
+uid="uid://crqbopdxdpr2s"
+path="res://.godot/imported/index.apple-touch-icon.png-dd908a5e164cfb1afbcac1db68033817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Vector/pattern_56.svg"
-dest_files=["res://.godot/imported/pattern_56.svg-3c5c275be99e8f0738255da326927a21.ctex"]
+source_file="res://dist/web/index.apple-touch-icon.png"
+dest_files=["res://.godot/imported/index.apple-touch-icon.png-dd908a5e164cfb1afbcac1db68033817.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

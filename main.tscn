@@ -68,6 +68,7 @@ keep_aspect = 0
 
 [node name="2" type="Node3D" parent="Components"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Components/2"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 23.7625, 10.300004, 1)

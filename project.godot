@@ -47,3 +47,4 @@ move_right={
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
+scaling_3d/fsr_sharpness=2.0

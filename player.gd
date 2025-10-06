@@ -3,6 +3,9 @@ extends CharacterBody3D
 var forward = transform.basis.x
 @onready var bitcoin: MeshInstance3D = $CollisionShape3D/bitcoin
 @onready var tunnel: CollisionShape3D = $"../Components/2/CSGCylinder3D/CSGCylinder3D2/Area3D/CollisionShape3D"
+@onready var Pointslabel: Label = $"../MarginContainer/Label"
+@onready var animation: AnimationPlayer = $CollisionShape3D/bitcoin/AnimationPlayer
+
 
 var onTunnel = false
 var atceiling = false
@@ -10,7 +13,8 @@ var atceiling = false
 const SPEED = 4
 const JUMP_VELOCITY = 4.5
 const rollingSPEED = -140000000
-
+func _ready() -> void:
+	Engine.time_scale = 0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -18,6 +22,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+		
 		if onTunnel == true and atceiling == false:
 			#PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, Vector3(1,10,0))
 			atceiling = true
@@ -29,16 +35,16 @@ func _physics_process(delta: float) -> void:
 	velocity.x = forward.x * rollingSPEED
 	#if onTunnel == false:
 		#PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, Vector3(0,-1,0))
-		
+
 	if is_on_floor():
-		bitcoin.rotate_x(2)
+		bitcoin.rotate_x(0.05)
 	else:
-		bitcoin.rotate_x(1)
+		bitcoin.rotate_x(0.025)
 	if direction:
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		
 	move_and_slide()
 
 

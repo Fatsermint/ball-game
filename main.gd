@@ -6,6 +6,12 @@ extends Node3D
 @onready var Mapp1: Node3D = $"Components/1"
 @onready var kill1: CollisionShape3D = $"Components/1/KillZone/Area3D/CollisionShape3D"
 @onready var kill2: CollisionShape3D = $"Components/2/KillZone/Area3D/CollisionShape3D"
+@onready var ButtonMag: MarginContainer = $MarginContainer2
+@onready var labelMag: Label = $MarginContainer3/Label
+@onready var PointsMag: Label = $MarginContainer/Label
+@onready var animation: AnimationPlayer = $Player/AnimationPlayer
+@onready var camera: Camera3D = $Player/Camera3D
+
 
 
 static var score = 0
@@ -41,6 +47,7 @@ func _moremap():
 		next = randf_range(0,1)
 		print(next)
 func _ready() -> void:
+	
 	_moremap()
 
 #4.8
@@ -48,5 +55,16 @@ func _process(delta: float) -> void:
 	if player.position.x > playerpos:
 		playerpos +=  100
 		_moremap()
-	score = player.position.x
+	score = round(player.position.x)
+	PointsMag.text = str(score) + " Coins Traveled"
 		
+
+
+func _on_button_pressed() -> void:
+
+	
+	Engine.time_scale = 1
+	ButtonMag.visible = false
+	labelMag.visible = false
+	PointsMag.visible = true
+	

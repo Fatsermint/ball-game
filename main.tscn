@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2s0xlwcq430d"]
+[gd_scene load_steps=15 format=3 uid="uid://b2s0xlwcq430d"]
 
 [ext_resource type="Script" uid="uid://cb01y45c440ww" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://di1meaf1hwpqp" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bpfl6ho3urqlw" path="res://addons/pattern_74.svg" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://c2kicsn0ri6v6" path="res://kill.gd" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://c77al1ege2vtw" path="res://addons/pixelFont-7-8x14-sproutLands.ttf" id="3_lquwl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(0.08866676, 0.76, 0, 1)
@@ -53,19 +54,20 @@ uv1_scale = Vector3(0.1, 0.1, 0.1)
 script = ExtResource("1_ig7tw")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.7999979, 12.399999, -0.20000267)
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(-1, -8.8711545e-09, 1.04550644e-07, -3.5527137e-15, 0.93969274, 0.3420201, -1.13073675e-07, 0.34202015, -0.9396926, 2.858352e-07, 2.5475771, -2.6739783)
+transform = Transform3D(-1.937151e-07, -4.569556e-08, 1, 4.3711385e-08, 1, 4.569557e-08, -1, 4.3711392e-08, -1.937151e-07, 0.7999979, 13.799998, 0.59999734)
+floor_max_angle = 0.2617994
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, -1.8761412e-07, 9.4230145e-08, -1.4407101e-07, 0.9396927, 0.34202003, -1.5271516e-07, 0.34202003, -0.9396927, -0.042381525, 1.9911261, -4.173977)
+keep_aspect = 0
 
 [node name="Components" type="CSGCombiner3D" parent="."]
 
 [node name="2" type="Node3D" parent="Components"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
-visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Components/2"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 23.7625, 10.300004, 1)
@@ -245,6 +247,69 @@ visible = false
 size = Vector3(100, 1, 1)
 material = SubResource("StandardMaterial3D_4c57u")
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.5
+offset_right = 206.5
+offset_bottom = 114.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_lquwl")
+theme_override_font_sizes/font_size = 32
+text = "Coins travelled"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -82.0
+offset_right = 144.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.48000062)
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lquwl")
+theme_override_font_sizes/font_size = 90
+text = "Play"
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.5
+offset_right = 246.5
+offset_bottom = 57.0
+grow_horizontal = 2
+scale = Vector2(1.1149426, 2.5792305)
+
+[node name="Label" type="Label" parent="MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_lquwl")
+theme_override_font_sizes/font_size = 27
+text = "Use arrow keys and space
+ or A/D and space to move around"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Components/2/CSGCylinder3D/CSGCylinder3D2/Area3D" to="Player" method="tunnel_entered"]
 [connection signal="body_exited" from="Components/2/CSGCylinder3D/CSGCylinder3D2/Area3D" to="Player" method="tunnel_exited"]
 [connection signal="body_entered" from="Components/1/Area3D" to="Components/1/Area3D" method="_on_body_entered"]
+[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]
